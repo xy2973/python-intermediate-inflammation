@@ -73,3 +73,14 @@ def test_patient_normalise(test, expected, expect_raises):
             npt.assert_almost_equal(patient_normalise(np.array(test)), np.array(expected), decimal=2)
     else:
         npt.assert_almost_equal(patient_normalise(np.array(test)), np.array(expected), decimal=2)
+
+
+def test_random_numpy():
+    mean = 5
+    sdev = 3
+    sample_size = 1000000
+
+    sample = np.random.normal(mean, sdev, sample_size)
+
+    np.testing.assert_almost_equal(mean, np.mean(sample), decimal=2)
+    np.testing.assert_almost_equal(sdev, np.std(sample), decimal=2)
